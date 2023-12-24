@@ -7,5 +7,21 @@
     <fragment
         android:id="@+id/firstScreen"
         android:name="com.example.suitmediatest.presentation.first_page.FirstScreen"
-        android:label="FirstScreen" />
+        android:label="FirstScreen" >
+        <action
+            android:id="@+id/action_firstScreen_to_secondScreen"
+            app:destination="@id/secondScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondScreen"
+        android:name="com.example.suitmediatest.presentation.second_page.SecondScreen"
+        android:label="SecondScreen" >
+        <action
+            android:id="@+id/action_secondScreen_to_thirdScreen"
+            app:destination="@id/thirdScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/thirdScreen"
+        android:name="com.example.suitmediatest.presentation.third_page.ThirdScreen"
+        android:label="ThirdScreen" />
 </navigation>
