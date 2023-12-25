@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/black">
     <item
         android:bottom="1dp"
         android:left="-2dp"
@@ -18,5 +19,4 @@
                 android:bottom="10dp" />
         </shape>
     </item>
-
-</layer-list>
+</ripple>

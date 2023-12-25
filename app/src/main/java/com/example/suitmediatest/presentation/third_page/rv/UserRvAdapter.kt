@@ -3,6 +3,8 @@ package com.example.suitmediatest.presentation.third_page.rv
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -15,6 +17,7 @@ import com.example.suitmediatest.model.User
 
 
 class UserRvAdapter(
+    private val context: FragmentActivity,
     private val users: List<User>
 ): RecyclerView.Adapter<UserRvAdapter.UserRvViewHolder>() {
     class UserRvViewHolder (userCard: UserCardBinding) : RecyclerView.ViewHolder(userCard.root){
@@ -40,6 +43,7 @@ class UserRvAdapter(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: UserRvViewHolder, position: Int) {
+        Log.e("LAKJSDL", users[position].avatar)
         holder.name.setText("${users[position].first_name} ${users[position].last_name}")
         holder.email.setText(users[position].email)
     }

@@ -17,8 +17,11 @@ import javax.inject.Inject
 class ThirdScreenViewModel @Inject constructor(
     private val repository: Repository
 ) :ViewModel(){
-    val listState = MutableLiveData<DataHandler<ListResponse>>()
-    val listData = MutableLiveData<List<User>>()
+    val listState = MutableLiveData<DataHandler<ListResponse>>(DataHandler.LOADING())
+    val listData = MutableLiveData<List<User>>(listOf())
+    val pageNow = MutableLiveData(1)
+    val endOfPagination = MutableLiveData(false)
+
     fun getList(page:Int){
         viewModelScope.launch {
             repository.getList(page).collect{
@@ -26,8 +29,15 @@ class ThirdScreenViewModel @Inject constructor(
 
                 if(it is DataHandler.SUCCESS){
                     listData.postValue((listData.value ?: listOf()) + (it.data?.data ?: listOf()))
+                    if((listData.value ?:  listOf()).size != 0 && (listData.value ?:  listOf()).size % 10 != 0){
+                        endOfPagination.postValue(true)
+                    }
                 }
             }
         }
+    }
+
+    init {
+        getList(1)
     }
 }

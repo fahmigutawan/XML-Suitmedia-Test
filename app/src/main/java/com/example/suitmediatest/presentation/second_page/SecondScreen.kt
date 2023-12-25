@@ -16,6 +16,7 @@ class SecondScreen: Fragment(R.layout.second_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = SecondScreenBinding.bind(view)
+        binding.secondscreenAppbar.appbarTitle.setText("Second Screen")
         val viewModel by viewModels<SecondScreenViewModel>()
 
         val name = binding.secondscreenNameTv

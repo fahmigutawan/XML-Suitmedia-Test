@@ -21,8 +21,13 @@ class Repository @Inject constructor(
 
         try {
             val res = remoteDataSource.getList(page)
+            val body = res.body<ListResponse>()
 
-            emit(DataHandler.SUCCESS(res.body()))
+            if(body.data.isNotEmpty()) {
+                emit(DataHandler.SUCCESS(body))
+            }else {
+                emit(DataHandler.EMPTY())
+            }
         }catch (e:Exception){
             emit(DataHandler.ERROR(message = e.message.toString()))
         }
