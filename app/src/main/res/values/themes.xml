@@ -2,7 +2,8 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.SuitmediaTest" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+         <item name="colorPrimary">#2B637B</item>
+        <item name="android:colorBackground">#ffffff</item>
     </style>
 
     <style name="Theme.SuitmediaTest" parent="Base.Theme.SuitmediaTest" />

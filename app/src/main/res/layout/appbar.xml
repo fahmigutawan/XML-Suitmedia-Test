@@ -16,7 +16,10 @@
         android:src="@drawable/ic_left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/iconbutton_style"/>
 
     <TextView
         android:id="@+id/appbar_title"
