@@ -35,6 +35,7 @@ class ThirdScreen : Fragment(R.layout.third_screen) {
         }
 
         viewModel.listState.observe(viewLifecycleOwner) {
+            swipeRefresh.isRefreshing = false
             when (it) {
                 is DataHandler.ERROR -> {
                     progressBar.visibility = View.GONE
@@ -53,7 +54,7 @@ class ThirdScreen : Fragment(R.layout.third_screen) {
                 }
 
                 is DataHandler.EMPTY -> {
-                    Toast.makeText(activity, "End of the list", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(activity, "End of the list", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -69,7 +70,10 @@ class ThirdScreen : Fragment(R.layout.third_screen) {
         }
 
         swipeRefresh.setOnRefreshListener {
-            // TODO Handle Here
+            viewModel.endOfPagination.postValue(false)
+            viewModel.listData.postValue(emptyList())
+            viewModel.pageNow.postValue(1)
+            viewModel.getList(1)
         }
 
         rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {

@@ -12,12 +12,11 @@
         android:layout_height="wrap_content"
         android:background="@drawable/usercard_style"
         >
-        <com.google.android.material.imageview.ShapeableImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/usercard_iv"
             android:layout_width="49dp"
             android:layout_height="49dp"
-            android:src="@drawable/circularprogress_style"
-            android:scaleType="centerCrop"
+            android:src="@color/black"
             app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
             />
         <LinearLayout

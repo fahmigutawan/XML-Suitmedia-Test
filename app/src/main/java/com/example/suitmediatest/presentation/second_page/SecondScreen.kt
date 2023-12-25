@@ -7,10 +7,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.suitmediatest.R
 import com.example.suitmediatest.databinding.SecondScreenBinding
+import com.example.suitmediatest.mainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SecondScreen: Fragment(R.layout.second_screen) {
+class SecondScreen : Fragment(R.layout.second_screen) {
     lateinit var binding: SecondScreenBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -22,6 +23,12 @@ class SecondScreen: Fragment(R.layout.second_screen) {
         val name = binding.secondscreenNameTv
         val backBtn = binding.secondscreenAppbar.backBtn
         val chooseBtn = binding.secondscreenChooseBtn
+
+        mainViewModel.selectedUser.observe(viewLifecycleOwner) {
+            if ("${it.first_name} ${it.last_name}" != binding.secondscreenSelecteduserTv.text.toString()) {
+                binding.secondscreenSelecteduserTv.setText("${it.first_name} ${it.last_name}")
+            }
+        }
 
         backBtn.setOnClickListener {
             findNavController().popBackStack()
